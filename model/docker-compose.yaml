@@ -1,0 +1,8 @@
+version: '3'
+
+services: 
+  web:
+    build:
+    command: sh -c "python3 model.py"
+    ports: 
+      - 32183:32183

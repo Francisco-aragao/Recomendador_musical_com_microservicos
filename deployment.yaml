@@ -1,0 +1,35 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: gabrielcardoso-playlist-recommender-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: gabrielcardoso-playlist-recommender
+  template:
+    metadata:
+      labels:
+        app: gabrielcardoso-playlist-recommender
+    spec:
+      volumes:
+        - name: pvc-volume
+          persistentVolumeClaim:
+            claimName: project2-pv-gabrielcardoso
+      containers:
+      - name: playlist-recommender
+        image: docker.io/gabrielpains/gabrielcardoso-playlists-recommender:0.1
+        imagePullPolicy: Always
+        volumeMounts:
+            - name: pvc-volume
+              mountPath: /shared
+        ports:
+        - containerPort: 32183
+      - name: playlist-model
+        image: docker.io/gabrielpains/gabrielcardoso-playlists-model:0.1
+        imagePullPolicy: Always
+        volumeMounts:
+            - name: pvc-volume
+              mountPath: /shared
+        command: ["sleep"]
+        args: ["300"]
