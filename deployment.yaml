@@ -42,7 +42,7 @@ spec:
         ports:
         - containerPort: 32183
       - name: playlist-model
-        image: docker.io/gabrielpains/gabrielcardoso-playlists-model:latest
+        image: docker.io/gabrielpains/gabrielcardoso-playlists-model:cf7fe4f
         imagePullPolicy: Always
         volumeMounts:
             - name: pvc-volume
