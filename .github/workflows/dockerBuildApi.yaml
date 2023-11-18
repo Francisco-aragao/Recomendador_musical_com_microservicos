@@ -25,11 +25,13 @@ jobs:
 
           sed -i '37s|.*|        image: docker.io/gabrielpains/gabrielcardoso-playlists-recommender:${{ steps.commit_tag.outputs.TAG }}|' deployment.yaml
 
+          sed -i '46s|.*|          value: "${{ steps.commit_tag.outputs.TAG }}"|' deployment.yaml
+
           git config --global user.name 'Francisco-aragao'
           git config --global user.email 'franciscoaragao785@gmail.com'
           git remote set-url origin https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/Francisco-aragao/Tp2_ComputacaoNuvem.git
 
-          git pull
           git add deployment.yaml
           git commit -m "Update deployment.yaml via GitHub Actions for Model" 
+          git pull
           git push

@@ -38,7 +38,7 @@ currentModelDatetime = getModelDatetime(modelpath)
 # Used for tests
 @app.get("/")
 def read_root():
-    return {"Message": "Github actions test 8"}
+    return {"Message": "Github actions test 12"}
 
 # Route to recommend playlists
 @app.post("/api/recommender")
@@ -68,7 +68,9 @@ def insert(body: RequestSongs):
 
     # Generate response, model version will be updated if the model changes       
     response = {}
-    response['model_version'] = getVersionFromDt(currentModelDatetime)
+    response['latest_api_tag']       = str(os.environ.get('API_TAG'))
+    response['latest_ml_tag']        = str(os.environ.get('ML_TAG'))
+    response['model_version']        = getVersionFromDt(currentModelDatetime)
     response['recommended_playlist'] = sorted(list(set(recommendation)))
     
     # Fast API will automagically convert dict to json

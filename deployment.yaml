@@ -41,8 +41,13 @@ spec:
               mountPath: app/shared
         ports:
         - containerPort: 32183
+        env:
+        - name: API_TAG
+          value: "988c07a"
+        - name: ML_TAG
+          value: "cf7fe4f"
       - name: playlist-model
-        image: docker.io/gabrielpains/gabrielcardoso-playlists-model:latest
+        image: docker.io/gabrielpains/gabrielcardoso-playlists-model:cf7fe4f
         imagePullPolicy: Always
         volumeMounts:
             - name: pvc-volume
