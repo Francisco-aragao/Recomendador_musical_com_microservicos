@@ -1,0 +1,24 @@
+name: Docker Build
+
+on:
+  push:
+    paths:
+      - 'model/**'
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Get commit tag
+        id: commit_tag
+        run: echo "::set-output name=TAG::$(git describe --tags --always)"
+
+      - name: Docker Build and Push
+        if: ${{ github.event_name == 'push' && contains(github.event.head_commit.added, 'model/') }}
+        run: |
+          docker build -t gabrielpains/gabrielcardoso-playlists-model:${{ steps.commit_tag.outputs.TAG }} ./model
+          docker push gabrielpains/gabrielcardoso-playlists-model:${{ steps.commit_tag.outputs.TAG }}

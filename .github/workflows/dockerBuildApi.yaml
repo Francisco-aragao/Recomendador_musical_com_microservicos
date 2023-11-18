@@ -1,0 +1,24 @@
+name: Docker Build
+
+on:
+  push:
+    paths:
+      - 'api/**'
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Get commit tag
+        id: commit_tag
+        run: echo "::set-output name=TAG::$(git describe --tags --always)"
+
+      - name: Docker Build and Push
+        if: ${{ github.event_name == 'push' && contains(github.event.head_commit.added, 'api/') }}
+        run: |
+          docker build -t gabrielpains/gabrielcardoso-playlists-recommender:${{ steps.commit_tag.outputs.TAG }} ./api
+          docker push gabrielpains/gabrielcardoso-playlists-recommender:${{ steps.commit_tag.outputs.TAG }}
