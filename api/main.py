@@ -1,4 +1,5 @@
 import os
+import time
 from datetime import datetime
 import pickle
 
@@ -24,6 +25,11 @@ def getVersionFromDt(dt: datetime) -> str:
 
 # Load model on startup
 modelpath = './shared/model.pickle'
+
+# Wait for model file to be available (only needed on startup)
+while not os.path.exists(modelpath):
+    time.sleep(1)
+
 model = pickle.load(open(modelpath, 'rb')) 
 
 currentModelDatetime = getModelDatetime(modelpath)
@@ -63,7 +69,7 @@ def insert(body: RequestSongs):
     # Generate response, model version will be updated if the model changes       
     response = {}
     response['model_version'] = getVersionFromDt(currentModelDatetime)
-    response['recommended_playlist'] = list(set(recommendation))
+    response['recommended_playlist'] = sorted(list(set(recommendation)))
     
     # Fast API will automagically convert dict to json
     return response

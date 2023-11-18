@@ -1,6 +1,6 @@
 #!/bin/bash
 
-kubectl -n gabrielcardoso apply -f claim.yaml
+#kubectl -n gabrielcardoso apply -f claim.yaml
 kubectl -n gabrielcardoso apply -f service.yaml
 kubectl -n gabrielcardoso apply -f deployment.yaml
 
