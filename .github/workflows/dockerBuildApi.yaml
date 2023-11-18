@@ -18,7 +18,6 @@ jobs:
         run: echo "::set-output name=TAG::$(git describe --tags --always)"
 
       - name: Docker Build and Push
-        if: ${{ github.event_name == 'push' && contains(github.event.head_commit.added, 'api/') }}
         run: |
           docker build -t gabrielpains/gabrielcardoso-playlists-recommender:${{ steps.commit_tag.outputs.TAG }} ./api
           docker push gabrielpains/gabrielcardoso-playlists-recommender:${{ steps.commit_tag.outputs.TAG }}
