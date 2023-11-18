@@ -38,7 +38,7 @@ currentModelDatetime = getModelDatetime(modelpath)
 # Used for tests
 @app.get("/")
 def read_root():
-    return {"Message": "Github actions test 4"}
+    return {"Message": "Github actions test 3"}
 
 # Route to recommend playlists
 @app.post("/api/recommender")
