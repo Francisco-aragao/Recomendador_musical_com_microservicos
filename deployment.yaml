@@ -19,7 +19,7 @@ kind: Deployment
 metadata:
   name: gabrielcardoso-playlist-recommender-deployment
 spec:
-  replicas: 1
+  replicas: 2
   selector:
     matchLabels:
       app: gabrielcardoso-playlist-recommender
