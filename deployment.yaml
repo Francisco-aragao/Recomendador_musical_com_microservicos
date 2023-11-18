@@ -45,9 +45,9 @@ spec:
         - name: API_TAG
           value: "918ab2b"
         - name: ML_TAG
-          value: "cf7fe4f"
+          value: "f2eda2a"
       - name: playlist-model
-        image: docker.io/gabrielpains/gabrielcardoso-playlists-model:cf7fe4f
+        image: docker.io/gabrielpains/gabrielcardoso-playlists-model:f2eda2a
         imagePullPolicy: Always
         volumeMounts:
             - name: pvc-volume
