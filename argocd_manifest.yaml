@@ -1,0 +1,11 @@
+project: gabrielcardoso-project
+source:
+  repoURL: 'https://github.com/Francisco-aragao/Tp2_ComputacaoNuvem.git'
+  path: .
+  targetRevision: main
+destination:
+  server: 'https://kubernetes.default.svc'
+  namespace: gabrielcardoso
+syncPolicy:
+  automated:
+    prune: true

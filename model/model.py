@@ -5,7 +5,7 @@ import time
 import os
 import ssl
 
-# Disable ssl do read_csv can work
+# Disable ssl so read_csv can work
 ssl._create_default_https_context = ssl._create_unverified_context
 
 # Dataset url (Environment variable)
@@ -37,6 +37,5 @@ freqItemSet, rules = fpgrowth(playlistSongsList, minSupRatio=0.07, minConf=0.5)
 pickle.dump(rules, open(pvPath, 'wb'))
 
 # Avoid termination
-# TODO: MONITOR DATASET AND RE-RUN AUTOMATICALLY
 while (True):
     time.sleep(300)
