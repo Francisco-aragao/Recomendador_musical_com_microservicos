@@ -34,7 +34,7 @@ spec:
             claimName: project2-pv-gabrielcardoso
       containers:
       - name: playlist-recommender
-        image: docker.io/gabrielpains/gabrielcardoso-playlists-recommender
+        image: docker.io/gabrielpains/gabrielcardoso-playlists-recommender:latest
         imagePullPolicy: Always
         volumeMounts:
             - name: pvc-volume
@@ -42,7 +42,7 @@ spec:
         ports:
         - containerPort: 32183
       - name: playlist-model
-        image: docker.io/gabrielpains/gabrielcardoso-playlists-model
+        image: docker.io/gabrielpains/gabrielcardoso-playlists-model:latest
         imagePullPolicy: Always
         volumeMounts:
             - name: pvc-volume
