@@ -22,3 +22,11 @@ jobs:
           docker login -u gabrielpains -p ${{ secrets.DOCKERHUB_TOKEN }}
           docker build -t gabrielpains/gabrielcardoso-playlists-recommender:${{ steps.commit_tag.outputs.TAG }} ./api
           docker push gabrielpains/gabrielcardoso-playlists-recommender:${{ steps.commit_tag.outputs.TAG }}
+
+          sed -i '37s|.*|        image: docker.io/gabrielpains/gabrielcardoso-playlists-recommender:${{ steps.commit_tag.outputs.TAG }}|' deployment.yaml
+
+          git config --global user.email "gabriel632@protonmail.com"
+          git config --global user.name "probablygab"
+          git add deployment.yaml
+          git commit -m "Update deployment.yaml via GitHub Actions for Api" 
+          git push

@@ -22,3 +22,11 @@ jobs:
           docker login -u gabrielpains -p ${{ secrets.DOCKERHUB_TOKEN }}
           docker build -t gabrielpains/gabrielcardoso-playlists-model:${{ steps.commit_tag.outputs.TAG }} ./model
           docker push gabrielpains/gabrielcardoso-playlists-model:${{ steps.commit_tag.outputs.TAG }}
+
+          sed -i '45s|.*|        image: docker.io/gabrielpains/gabrielcardoso-playlists-model:${{ steps.commit_tag.outputs.TAG }}|' deployment.yaml
+
+          git config --global user.email "gabriel632@protonmail.com"
+          git config --global user.name "probablygab"
+          git add deployment.yaml
+          git commit -m "Update deployment.yaml via GitHub Actions for Model" 
+          git push
