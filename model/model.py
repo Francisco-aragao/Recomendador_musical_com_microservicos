@@ -5,7 +5,7 @@ import time
 import os
 import ssl
 
-# Disable ssl so read_csv can work properly
+# Disable ssl so read_csv can work
 ssl._create_default_https_context = ssl._create_unverified_context
 
 # Dataset url (Environment variable)
