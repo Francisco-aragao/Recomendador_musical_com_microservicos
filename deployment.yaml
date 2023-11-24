@@ -9,10 +9,11 @@ metadata:
 spec:
   accessModes:
     - ReadWriteMany
-  storageClassName: standard
   resources:
     requests:
       storage: 1Gi
+  storageClassName: standard
+  volumeName: project2-pv-gabrielcardoso
 ---
 apiVersion: apps/v1
 kind: Deployment
