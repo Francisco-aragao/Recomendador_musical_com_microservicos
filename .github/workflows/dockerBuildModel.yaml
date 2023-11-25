@@ -23,9 +23,9 @@ jobs:
           docker build -t gabrielpains/gabrielcardoso-playlists-model:${{ steps.commit_tag.outputs.TAG }} ./model
           docker push gabrielpains/gabrielcardoso-playlists-model:${{ steps.commit_tag.outputs.TAG }}
 
-          sed -i '50s|.*|        image: docker.io/gabrielpains/gabrielcardoso-playlists-model:${{ steps.commit_tag.outputs.TAG }}|' deployment.yaml
+          sed -i '51s|.*|        image: docker.io/gabrielpains/gabrielcardoso-playlists-model:${{ steps.commit_tag.outputs.TAG }}|' deployment.yaml
 
-          sed -i '48s|.*|          value: "${{ steps.commit_tag.outputs.TAG }}"|' deployment.yaml
+          sed -i '49s|.*|          value: "${{ steps.commit_tag.outputs.TAG }}"|' deployment.yaml
 
           git config --global user.name 'Francisco-aragao'
           git config --global user.email 'franciscoaragao785@gmail.com'

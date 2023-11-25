@@ -23,9 +23,9 @@ jobs:
           docker build -t gabrielpains/gabrielcardoso-playlists-recommender:${{ steps.commit_tag.outputs.TAG }} ./api
           docker push gabrielpains/gabrielcardoso-playlists-recommender:${{ steps.commit_tag.outputs.TAG }}
 
-          sed -i '37s|.*|        image: docker.io/gabrielpains/gabrielcardoso-playlists-recommender:${{ steps.commit_tag.outputs.TAG }}|' deployment.yaml
+          sed -i '38s|.*|        image: docker.io/gabrielpains/gabrielcardoso-playlists-recommender:${{ steps.commit_tag.outputs.TAG }}|' deployment.yaml
 
-          sed -i '46s|.*|          value: "${{ steps.commit_tag.outputs.TAG }}"|' deployment.yaml
+          sed -i '47s|.*|          value: "${{ steps.commit_tag.outputs.TAG }}"|' deployment.yaml
 
           git config --global user.name 'Francisco-aragao'
           git config --global user.email 'franciscoaragao785@gmail.com'
