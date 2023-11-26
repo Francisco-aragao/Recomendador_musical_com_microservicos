@@ -1,0 +1,1 @@
+wget -O response.json --header='Content-Type: application/json' --post-data '{"songs": ["X (feat. Future)", "Slippery (feat. Gucci Mane)", "goosebumps"]}' 10.99.252.60:32183/api/recommender
